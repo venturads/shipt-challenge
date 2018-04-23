@@ -107,6 +107,9 @@
   #portfolio-sub h2{
 	line-height: 20%;
   }
+  #stores-name{
+	text-align: center;
+  }
   @media screen and (max-width: 768px) {
     .col-sm-4 {
       text-align: center;
@@ -166,7 +169,9 @@
 		</div>
 	  </form>
 	</div>
-
+	
+	<div id="stores-name">--</div>
+	
 	<!-- Container (Portfolio Section) -->
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 	  <div id="portfolio-sub">
@@ -211,12 +216,26 @@
 		const getHtp = new XMLHttpRequest();
 		getHtp.onreadystatechange = function(){
 			if(this.readyState == 4 && this.status == 200){
-				let zipdata = JSON.parse(this.responseText);
-				alert(zipdata);
+				myList(this);
 			};
 		}
 		getHtp.open("GET", zipapi, true);
 		getHtp.send();
+		
+		function myList(getHtp){
+			let table = "<br>";
+			let zipdata = JSON.parse(getHtp.responseText);
+			
+			for(let i=0;i<zipdata.stores.length;i++){
+				function jobCity(){
+					if(getHtp.stores[i].name == null){
+						"not city";
+					}
+				}
+			table += "<br>" + zipdata.stores[i].name;
+		}
+		document.getElementById("stores-name").innerHTML = table;
+	}
 	}
 	document.getElementById("btn-zip").addEventListener("click", getzip);
 </script>
