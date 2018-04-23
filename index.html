@@ -207,7 +207,7 @@
 	function getzip(){
 		let btn = document.getElementById("zip-code").value;
 		let zipapi = "https://shipt-zip-code-test-api.herokuapp.com/api/zip_codes/35203";
-		zipapi = "https://codepen.io/jobs.json";
+		//zipapi = "https://codepen.io/jobs.json";
 		const getHtp = new XMLHttpRequest();
 		getHtp.onreadystatechange = function(){
 			let zipdata = JSON.parse(getHtp.responseText);
