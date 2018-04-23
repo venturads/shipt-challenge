@@ -210,11 +210,11 @@
 		//zipapi = "https://codepen.io/jobs.json";
 		const getHtp = new XMLHttpRequest();
 		getHtp.onreadystatechange = function(){
-			let zipdata = JSON.parse(getHtp.responseText);
-			if(getHtp.status == 200){
+			if(this.readyState == 4 && this.status == 200){
+				let zipdata = JSON.parse(this.responseText);
 				alert(zipdata);
-			}
-		};
+			};
+		}
 		getHtp.open("GET", zipapi, true);
 		getHtp.send();
 	}
