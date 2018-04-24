@@ -107,6 +107,9 @@
 	text-align: center;
 	font-size: 12px;
   }
+  #footer-text{
+	padding: 20px;
+  }
   #portfolio-sub h2{
 	line-height: 20%;
   }
@@ -229,9 +232,8 @@
 	  </div>
 	</div>
 </div>
-<footer class="container-fluid text-center">
-&copy; 2018 Shipt, Inc. and its service are not necessarily affiliated or endorsed by the retailers on the site.
-	<div id="footer-text"></div>
+<footer class="text-center">
+	<div id="footer-text">&copy; 2018 Shipt, Inc. and its service are not necessarily affiliated or endorsed by the retailers on the site.</div>
 </footer>
 
 <script>	
@@ -255,17 +257,18 @@
 			
 			for(let i=0;i<zipdata.stores.length;i++){
 				let td = new Date();
-				let tm = td.getMonth()+1;
+				let tm = td.getMonth()+1, ty = td.getFullYear();
 				let m = new Date(zipdata.stores[i].launch_date);
-				let mm = m.getMonth()+1;
-				let dd = m.getDate();
+				let mm = m.getMonth()+1, dd = m.getDate(), yy = m.getFullYear();
 				let tdd = td.getYear() + tm + td.getDate(); 
 				let odd = m.getYear() + mm + m.getDate();
 				let dasdate = "";
-				if(mm <= tm){
-					dasdate = mm + "/" + dd;
+				if(yy > ty || (yy == ty && mm > tm) || (yy == ty && mm == tm && dd > td)){
+					dasdate = "Coming " + mm + "/" + dd;
+				}else if((yy < ty) || (yy == ty && mm < tm) || (yy==ty&&mm==tm&&dd<=td)){
+					dasdate = "Now Avalible";
 				}else{
-					dasdate = "coming soon";
+					dasdate = "Coming " + mm + "/" + dd;
 				}
 				table += "<div><div id='items'>" + zipdata.stores[i].name + "</div><div id='lauchd'>" + dasdate;
 			}
