@@ -22,18 +22,17 @@
 	  margin: auto;
   }
   h2 {
-      font-size: 24px;
-      text-transform: uppercase;
-      color: #303030;
+      font-size: 28px;
+      color: white;
       font-weight: 600;
-      margin-bottom: 30px;
+      //margin-bottom: 30px;
   }
   h4 {
-      font-size: 19px;
+      font-size: 12px;
       line-height: 1.375em;
-      color: #303030;
+      color: white;
       font-weight: 400;
-      margin-bottom: 30px;
+      //margin-bottom: 30px;
   }  
   #dis-bar{
 	text-align: center;
@@ -110,6 +109,16 @@
   #stores-name{
 	text-align: center;
   }
+  form{
+	text-align: center;
+	padding-left:25%;
+	padding-right:25%;
+  }
+  #items{
+	font-size: 22px;
+	display: inline;
+	padding: 20px;
+  }
   @media screen and (max-width: 768px) {
     .col-sm-4 {
       text-align: center;
@@ -131,6 +140,10 @@
 	#portfolio{
 		visibility: hidden;
 	}
+	form{
+		padding-left:0;
+		padding-right:0;
+  }
   }
   @media screen and (max-width: 480px) {
     .logo {
@@ -157,9 +170,9 @@
 		</div>
 	</nav>
 	<div class="jumbotron text-center">
-	  <h1>Target exclusive offer.</h1> 
-	  <p>$49 membership (reg. $99) + $15 credit</p>
-	  <p>with qualifying purchase.*</p>
+	  <h2>Target exclusive offer.</h2> 
+	  <h4>$49 membership (reg. $99) + $15 credit</h4>
+	  <h4>with qualifying purchase.*</h4>
 	  <form>
 		<div class="input-group">
 		  <input type="number" id="zip-code" class="form-control" size="50" placeholder="Enter Zip code" required>
@@ -175,22 +188,22 @@
 	<!-- Container (Portfolio Section) -->
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 	  <div id="portfolio-sub">
-		<h2>Everything you love about</h2>
-		<h2>Target at your fingertips.</h2>
+		<h2>Scroll through the aisles.</h2>
+		<h2>Create an order from your local store in our app or on our website.</h2>
 	  </div>
 	  <div class="row text-center slideanim">
 		<div class="col-sm-4">
 		  <div class="thumbnail">
 			<img src="img/image1.jpg" alt="Paris" width="400" height="300">
-			<p><strong>Paris</strong></p>
-			<p>Yes, we built Paris</p>
+			<p><strong>Our shoppers work their magic</strong></p>
+			<p>Connect with your shopper and get live updates from the aisles.</p>
 		  </div>
 		</div>
 		<div class="col-sm-4">
 		  <div class="thumbnail">
 			<img src="img/image2.jpg" alt="New York" width="400" height="300">
-			<p><strong>New York</strong></p>
-			<p>We built New York</p>
+			<p><strong>We deliver your groceries</strong></p>
+			<p>Schedule a delivery, and your order will arrive in as soon as 1 hour.</p>
 		  </div>
 		</div>
 		<div class="col-sm-4">
@@ -232,10 +245,10 @@
 						"not city";
 					}
 				}
-			table += "<br>" + zipdata.stores[i].name;
+				table += "<div id='items'>" + zipdata.stores[i].name + "</div>";
+			}
+			document.getElementById("stores-name").innerHTML = "DELIVERING FROM:" + table;
 		}
-		document.getElementById("stores-name").innerHTML = table;
-	}
 	}
 	document.getElementById("btn-zip").addEventListener("click", getzip);
 </script>
