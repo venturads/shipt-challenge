@@ -7,13 +7,27 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
+  <style type="text/css">
+  @font-face{
+	font-family: 'Scandia';
+	src: url('./font/Scandia-Regular.otf'),
+		 url('./font/Scandia-Regular.eot'); <!-- IE -->
+  }
+  @font-face{
+	font-family: 'Scandia';
+	src: url('./font/Scandia-Bold.otf'),
+		 url('./font/Scandia-Bold.eot'); <!-- IE -->
+	font-weight: bold;
+  }
+  *{ font-family: Scandia; }
   body {
-      font: 400 15px Lato, sans-serif;
+	  font-size: 15px;
       line-height: 1.8;
       color: #818181;
+	  font-family: 'Scandia';
   }
   #main-content{
 	  width: 80%;
@@ -25,14 +39,14 @@
       font-size: 28px;
       color: white;
       font-weight: 600;
-      //margin-bottom: 30px;
+	  font-family: 'Scandia';
   }
   h4 {
       font-size: 12px;
       line-height: 1.375em;
       color: white;
       font-weight: 400;
-      //margin-bottom: 30px;
+	  font-family: 'Scandia';
   }  
   #dis-bar{
 	text-align: center;
@@ -45,10 +59,9 @@
 	  background-image: url("img/red-bg.jpg");
       color: #fff;
       padding: 100px 25px;
-      font-family: Montserrat, sans-serif;
 	  clear: both;
+	  font-family: 'Scandia';
   }
-
   .logo-small {
       color: #f4511e;
       font-size: 50px;
@@ -74,13 +87,9 @@
       font-style: italic;
       margin: 70px 0;
   }
-  .item span {
-      font-style: normal;
-  }
   
   #nav-bar{
 	left: 100px;
-	
 	height: 50px;
   }
   #nav-bar img{
@@ -127,7 +136,18 @@
 	padding: 20px;
   }
   #slogan{
+	padding-top: 50px;
 	color: black;
+	clear: both;
+  }
+  #ziprow{
+	width: 100%;
+	text-align: center;
+  }
+  #zipcol{
+	text-align: center;
+	float: left;
+	display: inline;
   }
   @media screen and (max-width: 768px) {
     .col-sm-4 {
@@ -197,7 +217,7 @@
 	<div id="stores-name">--</div>
 	
 	<!-- slogan -->
-	<div id="slogan" class="container-fluid text-center">
+	<div id="slogan" class="text-center">
 		<h3>Everything you love about<br> Target at your fingertips.</h3>
 	</div>
 	
@@ -270,9 +290,9 @@
 				}else{
 					dasdate = "Coming " + mm + "/" + dd;
 				}
-				table += "<div><div id='items'>" + zipdata.stores[i].name + "</div><div id='lauchd'>" + dasdate;
+				table += "<div id='zipcol'><div id='items'>" + zipdata.stores[i].name + "</div><div id='lauchd'>" + dasdate + "</div></div>";
 			}
-			document.getElementById("stores-name").innerHTML = "DELIVERING FROM:" + "<div id='row'>" + table + "</div>";
+			document.getElementById("stores-name").innerHTML = "DELIVERING FROM:" + "<div id='ziprow'>" + table + "</div>";
 		}
 	}
 	document.getElementById("btn-zip").addEventListener("click", getzip);
