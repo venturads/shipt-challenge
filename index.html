@@ -244,7 +244,7 @@
 		getHtp.onreadystatechange = function(){
 			if(this.readyState == 4 && this.status == 200){
 				myList(this);
-			};
+			}
 		}
 		getHtp.open("GET", zipapi, true);
 		getHtp.send();
@@ -254,12 +254,20 @@
 			let zipdata = JSON.parse(getHtp.responseText);
 			
 			for(let i=0;i<zipdata.stores.length;i++){
-				function jobCity(){
-					if(getHtp.stores[i].name = null){
-						alert("not city");
-					}
+				let td = new Date();
+				let tm = td.getMonth()+1;
+				let m = new Date(zipdata.stores[i].launch_date);
+				let mm = m.getMonth()+1;
+				let dd = m.getDate();
+				let tdd = td.getYear() + tm + td.getDate(); 
+				let odd = m.getYear() + mm + m.getDate();
+				let dasdate = "";
+				if(mm <= tm){
+					dasdate = mm + "/" + dd;
+				}else{
+					dasdate = "coming soon";
 				}
-				table += "<div><div id='items'>" + zipdata.stores[i].name + "</div><div id='lauchd'>" + zipdata.stores[i].launch_date + "</div></div>";
+				table += "<div><div id='items'>" + zipdata.stores[i].name + "</div><div id='lauchd'>" + dasdate;
 			}
 			document.getElementById("stores-name").innerHTML = "DELIVERING FROM:" + "<div id='row'>" + table + "</div>";
 		}
