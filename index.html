@@ -4,10 +4,7 @@
   <title>Grocery Devliery - Shipt</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style type="text/css">
@@ -132,22 +129,35 @@
   }
   #items{
 	font-size: 22px;
-	display: inline;
-	padding: 20px;
   }
   #slogan{
 	padding-top: 50px;
 	color: black;
-	clear: both;
+	display: block;
   }
   #ziprow{
-	width: 100%;
+	position: absolute;
+	padding-left: 5%;
+	padding-right: 5%;
 	text-align: center;
+	display: block;
   }
   #zipcol{
 	text-align: center;
-	float: left;
-	display: inline;
+	display: inline-block;
+	padding: 10px;
+  }
+  #lower-btn{
+    position: relative;
+	display: block;
+	text-align: center;
+	margin-left: 35%;
+  }
+  #lower-btn img{
+    position: relative;
+	width: 260px;
+	display: block;
+	text-align: center;
   }
   @media screen and (max-width: 768px) {
     .col-sm-4 {
@@ -168,7 +178,7 @@
 		margin-left: 0px;
 		margin-right: 0px;
 	}
-	#portfolio, footer, #slogan{
+	#portfolio, footer, #slogan, #lower-btn{
 		display: none;
 	}
 	form{
@@ -251,6 +261,9 @@
 		</div>
 	  </div>
 	</div>
+	<div id="lower-btn">
+		<img src="img/lower-btn.png" alt="Get Started with Shipt!"/>
+	</div>
 </div>
 <footer class="text-center">
 	<div id="footer-text">&copy; 2018 Shipt, Inc. and its service are not necessarily affiliated or endorsed by the retailers on the site.</div>
@@ -292,7 +305,7 @@
 				}
 				table += "<div id='zipcol'><div id='items'>" + zipdata.stores[i].name + "</div><div id='lauchd'>" + dasdate + "</div></div>";
 			}
-			document.getElementById("stores-name").innerHTML = "DELIVERING FROM:" + "<div id='ziprow'>" + table + "</div>";
+			document.getElementById("stores-name").innerHTML = "DELIVERING FROM:" + "<div id='ziprow' style='display: block;position:relative;'>" + table + "</div>";
 		}
 	}
 	document.getElementById("btn-zip").addEventListener("click", getzip);
